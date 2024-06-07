@@ -24,7 +24,7 @@
       gobject-introspection
       desktop-file-utils
       shared-mime-info
-    ];
+    ] ++ lib.optional stdenv.isDarwin gtk-mac-integration;
 
     nativeBuildInputs = with pkgs; [
       meson
