@@ -13,18 +13,25 @@
       sha256 = "sha256-RxEI1dTMrrFccxuYkb9GQzuFrzTiWOnnfEBR7V918c8=";
     };
 
-    buildInputs = with pkgs; [
-      flex
-      meson
-      ninja
-      pkg-config
-      gtk3
-      glib
-      gperf
-      gobject-introspection
-      desktop-file-utils
-      shared-mime-info
-    ] ++ lib.optional stdenv.isDarwin gtk-mac-integration;
+    buildInputs = with pkgs;
+      [
+        flex
+        meson
+        ninja
+        pkg-config
+        gtk3
+        glib
+        gperf
+        gobject-introspection
+        desktop-file-utils
+        shared-mime-info
+      ]
+      ++ lib.optional stdenv.isDarwin gtk-mac-integration;
+
+    configureFlags = [
+      "--enable-judy"
+      "--enable-gtk3"
+    ];
 
     nativeBuildInputs = with pkgs; [
       meson

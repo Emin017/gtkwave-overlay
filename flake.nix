@@ -27,7 +27,11 @@
       devShells.default = pkgs.mkShell {
         buildInputs = with pkgs; [
           gtkwaveOverlay
+          gtk3
         ];
+        shellHook = ''
+          export GSETTINGS_SCHEMA_DIR=${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.pname}-${pkgs.gtk3.version}/glib-2.0/schemas
+        '';
       };
 
       # nix fmt
